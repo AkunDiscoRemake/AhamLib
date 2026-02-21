@@ -1,0 +1,50 @@
+-- // Execute em um LocalScript //
+local SxzLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/AkunDiscoRemake/AhamLib/main/ahamlibv2Sxzremake"))()
+
+local Window = SxzLib:CreateWindow({
+    Title = "AhamSeek",
+    SubTitle = "Private Build",
+    Icon = "✨",
+    Color = Color3.fromRGB(120, 60, 200),
+    Size = Vector2.new(450, 320)
+})
+
+local Main = Window:CreateTab("Main", "🏠")
+local Settings = Window:CreateTab("Settings", "⚙️")
+
+-- Main Tab
+Main:Toggle({
+    Name = "Feature 1",
+    Description = "Descrição da funcionalidade",
+    Default = false,
+    Callback = function(v) task.spawn(function() -- sua lógica end) end
+})
+
+Main:Slider({
+    Name = "Valor",
+    Min = 0, Max = 100, Default = 50,
+    Callback = function(v) print("Valor:", v) end
+})
+
+Main:Button({
+    Name = "Executar",
+    Description = "Clique para rodar",
+    Callback = function() print("Botão pressionado!") end
+})
+
+Main:Label("➤ Status: Pronto")
+Main:Separator()
+
+-- Settings Tab
+Settings:Input({
+    Name = "Chave API",
+    Placeholder = "Cole sua chave aqui...",
+    Callback = function(key) print("API Key:", key) end
+})
+
+Settings:Toggle({
+    Name = "Modo Silencioso",
+    Default = false,
+    Callback = function(v) print("Silent:", v) end
+})
+
