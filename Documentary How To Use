@@ -1,0 +1,189 @@
+# 🎬 **SxzLib UI Library Documentary**
+
+*A Comprehensive Guide for Roblox Developers*
+
+---
+
+## 📌 **Introduction**
+
+SxzLib is a **Lua-based UI library for Roblox** designed to help developers quickly build **interactive, visually appealing GUIs**. It allows you to create:
+
+* Windows with draggable headers
+* Tabs for content organization
+* Interactive elements like buttons, toggles, sliders, labels, and inputs
+
+Its modular design and easy-to-use callbacks make it perfect for public GUIs where scalability and user engagement matter.
+
+---
+
+## 🧩 **Core Utilities**
+
+These are foundational functions used throughout the library:
+
+| Function                        | Purpose                                                 |
+| ------------------------------- | ------------------------------------------------------- |
+| `Tween(obj, props, t)`          | Smoothly animates object properties                     |
+| `Corner(obj, radius)`           | Adds rounded corners to UI elements                     |
+| `Stroke(obj, color, thickness)` | Adds borders to UI elements                             |
+| `New(class, props, parent)`     | Creates a new instance with given properties and parent |
+
+These utilities simplify GUI creation, animation, and styling.
+
+---
+
+## 🪟 **Creating Windows**
+
+```lua
+local Window = SxzLib:CreateWindow({
+    Title = "SXZ Hub",
+    SubTitle = "Dev: @author",
+    Icon = "⚔",
+    Color = Color3.fromRGB(60,100,220),
+    Size = Vector2.new(420, 310)
+})
+```
+
+**Key Features:**
+
+* Draggable header with smooth animation
+* Float button to toggle visibility
+* Sidebar for tabs
+* Search box for filtering tabs
+* Resizable content area
+
+---
+
+## 🗂️ **Tabs**
+
+Tabs organize UI content. Each tab includes:
+
+* Sidebar button
+* Independent content holder
+
+Example:
+
+```lua
+local tab = Window:CreateTab("Main", "⭐")
+```
+
+Tabs allow developers to categorize controls and improve UX in large GUIs.
+
+---
+
+## 🔘 **UI Elements**
+
+### Toggle
+
+```lua
+tab:Toggle({
+    Name = "Enable Feature",
+    Description = "Turns a feature on or off",
+    Default = false,
+    Callback = function(state)
+        print("Toggled:", state)
+    end
+})
+```
+
+---
+
+### Slider
+
+```lua
+tab:Slider({
+    Name = "Speed",
+    Min = 1,
+    Max = 100,
+    Default = 50,
+    Callback = function(value)
+        print("Value:", value)
+    end
+})
+```
+
+---
+
+### Button
+
+```lua
+tab:Button({
+    Name = "Press Me",
+    Callback = function()
+        print("Button clicked")
+    end
+})
+```
+
+---
+
+### Input
+
+```lua
+tab:Input({
+    Name = "Enter Text",
+    Placeholder = "Type here...",
+    Callback = function(text)
+        print("Input:", text)
+    end
+})
+```
+
+---
+
+### Label & Separator
+
+```lua
+tab:Label("Welcome to SXZ Hub")
+tab:Separator()
+```
+
+* Labels display static text
+* Separators create visual divisions
+
+---
+
+## 🚀 **Full Example**
+
+```lua
+local Window = SxzLib:CreateWindow({
+    Title = "SXZ Hub",
+    SubTitle = "By @Dev",
+    Color = Color3.fromRGB(100,60,200)
+})
+
+local mainTab = Window:CreateTab("Main", "⭐")
+mainTab:Label("Welcome!")
+mainTab:Toggle({
+    Name = "Activate Mode",
+    Default = false,
+    Callback = print
+})
+mainTab:Slider({
+    Name = "Speed",
+    Min = 1,
+    Max = 100,
+    Default = 50,
+    Callback = print
+})
+mainTab:Button({
+    Name = "Test",
+    Callback = function() print("Test clicked!") end
+})
+```
+
+---
+
+## 🛠️ **Advanced Tips**
+
+* Store control references for later use
+* Combine multiple tabs for complex UIs
+* Use callbacks to trigger in-game actions
+* Customize colors, fonts, and sizes for a unique theme
+
+---
+
+## 🏁 **Conclusion**
+
+SxzLib is ideal for **public GUIs**, developer tools, dashboards, and in-game menus. Its simple API, drag-and-drop capability, and modular structure make it scalable for **high-traffic use**.
+
+Whether for a **developer hub**, **debug panel**, or **interactive game menu**, SxzLib provides everything needed to build polished Roblox interfaces.
